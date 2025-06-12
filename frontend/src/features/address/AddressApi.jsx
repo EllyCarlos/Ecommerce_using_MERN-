@@ -1,4 +1,4 @@
-import { axiosi } from "../../config/axios";
+import { axios } from "../../config/axios";
 
 export const addAddress=async(address)=>{
     try {
