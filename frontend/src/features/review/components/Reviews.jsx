@@ -84,8 +84,12 @@ export const Reviews = ({productId,averageRating}) => {
         1:0
     }
 
-    reviews.map((review)=>{
-        ratingCounts[review.rating]=ratingCounts[review.rating]+1
+    // FIX 1: Added a check to ensure 'review' and 'review.rating' exist before processing.
+    // This prevents errors if the reviews array contains nullish values.
+    reviews?.forEach((review)=>{
+        if (review && typeof review.rating === 'number') {
+            ratingCounts[review.rating] = (ratingCounts[review.rating] || 0) + 1;
+        }
     })
 
 
@@ -97,7 +101,7 @@ export const Reviews = ({productId,averageRating}) => {
 
     
 
-  return (
+ return (
         <Stack rowGap={5} alignSelf={"flex-start"}  width={is480?"90vw":is840?"25rem":'40rem'}>
 
 
@@ -116,9 +120,9 @@ export const Reviews = ({productId,averageRating}) => {
                             <Stack rowGap={2}>
                                 {
                                     [5,4,3,2,1].map((number)=>(
-                                        <Stack flexDirection={'row'} justifyContent={'space-between'} alignItems={'center'} columnGap={1}>
+                                        <Stack key={number} flexDirection={'row'} justifyContent={'space-between'} alignItems={'center'} columnGap={1}>
                                             <Typography sx={{whiteSpace:"nowrap"}}>{number} star</Typography>
-                                            <LinearProgress sx={{width:"100%",height:"1rem",borderRadius:"4px"}} variant='determinate' value={(ratingCounts[number]/reviews?.length)*100}/>   
+                                            <LinearProgress sx={{width:"100%",height:"1rem",borderRadius:"4px"}} variant='determinate' value={(ratingCounts[number]/reviews?.length)*100}/>  
                                             <Typography>{parseInt(ratingCounts[number]/reviews?.length*100)}%</Typography>
                                         </Stack>
                                     ))
@@ -137,7 +141,24 @@ export const Reviews = ({productId,averageRating}) => {
 
             {/* reviews mapping */}
             <Stack rowGap={2} >
-                {reviews?.map((review)=>(<ReviewItem key={review._id} id={review._id} userid={review.user._id} comment={review.comment} createdAt={review.createdAt} rating={review.rating} username={review.user.name} />))}
+                {/* FIX 2: Added a check for `review && review.user`.
+                  This is the primary fix for the "Cannot read properties of null (reading '_id')" error.
+                  It ensures that we only try to render a ReviewItem if both the review and its associated user object exist,
+                  preventing an error if `review.user` is null from the API.
+                */}
+                {reviews?.map((review) =>
+                    review && review.user && (
+                        <ReviewItem
+                            key={review._id}
+                            id={review._id}
+                            userid={review.user._id}
+                            comment={review.comment}
+                            createdAt={review.createdAt}
+                            rating={review.rating}
+                            username={review.user.name}
+                        />
+                    )
+                )}
             </Stack>
 
             
@@ -152,7 +173,7 @@ export const Reviews = ({productId,averageRating}) => {
                     <Stack>
                         <Typography gutterBottom variant='body2'>How much did you like the product?</Typography>
                         <motion.div style={{width:"fit-content"}} whileHover={{scale:1.050,x:2}} whileTap={{scale:1}}>
-                            <Rating  size='large' value={value} onChange={(e) => setValue(e.target.value)}/>
+                            <Rating  size='large' value={value} onChange={(e) => setValue(parseInt(e.target.value, 10))}/>
                         </motion.div>
                     </Stack>
                     
@@ -176,5 +197,5 @@ export const Reviews = ({productId,averageRating}) => {
                 </motion.div>:""
             }
         </Stack>
-  )
+ )
 }
