@@ -1,146 +1,241 @@
-## MERN Ecommerce: A Seamless Shopping Experience Powered by the MERN Stack, Redux Toolkit, and Material UI
-**MERN Ecommerce** is a full-stack application designed to transform your online shopping experience. Built with the MERN stack (MongoDB, Express.js, React, Node.js), it leverages Redux Toolkit for efficient state management and Material UI for a sleek, user-friendly interface. This project offers a robust platform for both users and admins, packed with essential features for a seamless experience.
+<div align="center">
 
-# **Features**
+# 🛍️ MERN Ecommerce
 
-### **User:**
-- **Product Reviews:**
-  - Write, edit, and delete reviews.
-  - Instant updates on ratings and star percentages.
-  
-- **Wishlist:**
-  - Add, remove, and annotate products with personalized notes.
-  
-- **Order Management:**
-  - Create new orders and view order history.
-  
-- **Profile Management:**
-  - Manage email, username, and multiple addresses.
-  
-- **Shopping Cart:**
-  - Add products, adjust quantities, and view subtotals.
+### A Full-Stack Shopping Platform Built with the MERN Stack
 
-### **Admin:**
-- **Product Management:**
-  - Add, edit, delete, and soft-delete products.
-  - Manage product attributes like name and stock.
-  
-- **Order Management:**
-  - View and update order details and status.
+[![MongoDB](https://img.shields.io/badge/MongoDB-6.x-47A248?style=flat-square&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
+[![Express.js](https://img.shields.io/badge/Express.js-4.x-000000?style=flat-square&logo=express&logoColor=white)](https://expressjs.com/)
+[![React](https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react&logoColor=black)](https://react.dev/)
+[![Node.js](https://img.shields.io/badge/Node.js-21+-339933?style=flat-square&logo=nodedotjs&logoColor=white)](https://nodejs.org/)
+[![Redux Toolkit](https://img.shields.io/badge/Redux_Toolkit-state-764ABC?style=flat-square&logo=redux&logoColor=white)](https://redux-toolkit.js.org/)
+[![MUI](https://img.shields.io/badge/Material_UI-5-007FFF?style=flat-square&logo=mui&logoColor=white)](https://mui.com/)
+[![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](LICENSE)
+[![JavaScript](https://img.shields.io/badge/JavaScript-99.5%25-F7DF1E?style=flat-square&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
-### **Security & User Experience:**
-- **Secure Authentication:**
-  - Login, signup, OTP verification, password reset, and logout.
+**[🚀 Live Demo](https://ecommerce-using-mern-nu.vercel.app)** · **[🐛 Report Bug](https://github.com/EllyCarlos/ecommerce_mern_app/issues)** · **[✨ Request Feature](https://github.com/EllyCarlos/ecommerce_mern_app/issues)**
 
-- **Intuitive Interface:**
-  - Powered by Material UI for a visually appealing and user-friendly experience.
+</div>
 
-### **Scalability:**
-- **Built for Growth:**
-  - Scalable architecture to handle increasing user demands.
+---
 
+## 📖 Overview
 
-# **Project Setup**
+**MERN Ecommerce** is a feature-complete, full-stack online shopping platform built on the **MERN stack** (MongoDB, Express.js, React, Node.js). It delivers a polished shopping experience for customers and a powerful control panel for admins — covering everything from product management and order tracking to wishlists, reviews, and secure authentication.
+
+State is managed globally with **Redux Toolkit**, the UI is built with **Material UI**, and authentication is secured with **JWT + OTP verification**.
+
+---
+
+## ✨ Features
+
+### 🧑‍💻 Customer
+
+| Feature | Details |
+|---|---|
+| 🔐 **Authentication** | Sign up, log in, OTP verification, password reset, logout |
+| 🛒 **Shopping Cart** | Add/remove items, adjust quantities, view subtotals |
+| ❤️ **Wishlist** | Save products, add personal notes, remove items |
+| ⭐ **Product Reviews** | Write, edit, and delete reviews with live rating updates |
+| 📦 **Order Management** | Place orders and view full order history |
+| 👤 **Profile** | Manage email, username, and multiple saved addresses |
+
+### 🛠️ Admin
+
+| Feature | Details |
+|---|---|
+| 📦 **Product Management** | Add, edit, delete, and soft-delete products; manage stock and attributes |
+| 📋 **Order Management** | View all orders, update statuses and details |
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer | Technology |
+|---|---|
+| **Frontend** | React 18, Redux Toolkit, React-Redux, Material UI (MUI) |
+| **Backend** | Node.js, Express.js |
+| **Database** | MongoDB (Mongoose ODM) |
+| **Auth** | JWT, OTP via email (Nodemailer), bcrypt |
+| **State Management** | Redux Toolkit + RTK Query |
+| **Styling** | Material UI + responsive design |
+
+---
+
+## 📁 Project Structure
+
+```
+ecommerce_mern_app/
+├── frontend/                  # React application
+│   ├── src/
+│   │   ├── components/        # Reusable UI components
+│   │   ├── features/          # Redux slices (cart, auth, products, etc.)
+│   │   ├── pages/             # Route-level page components
+│   │   └── app/               # Redux store setup
+│   └── .env                   # Frontend environment variables
+│
+├── backend/                   # Express REST API
+│   ├── controllers/           # Route handler logic
+│   ├── models/                # Mongoose schemas
+│   ├── routes/                # API route definitions
+│   ├── middleware/            # Auth, error handling
+│   ├── seed/                  # Database seeding scripts
+│   └── .env                   # Backend environment variables
+│
+├── CODE_OF_CONDUCT.md
+├── LICENSE
+└── README.md
+```
+
+---
+
+## ⚙️ Local Setup
 
 ### Prerequisites
-- Node.js ( version v21.1.0 or later )
-- MongoDB installed and running locally
 
-### Clone the project
+- **Node.js** v21.1.0 or later
+- **MongoDB** running locally (or a cloud URI from [MongoDB Atlas](https://www.mongodb.com/atlas))
+- **nodemon** installed globally: `npm install -g nodemon`
 
-```bash
-  git clone https://github.com/EllyCarlos/Ecommerce_using_MERN-.git
-```
+---
 
-### Navigate to the project directory
+### 1. Clone the Repository
 
 ```bash
-  cd mern-ecommerce
+git clone https://github.com/EllyCarlos/ecommerce_mern_app.git
+cd ecommerce_mern_app
 ```
 
-### Install dependencies for frontend and backend separately
-**Tip:** To efficiently install dependencies for both frontend and backend simultaneously, use split terminals.
+---
 
-Install frontend dependencies
-```bash
-cd frontend
-npm install
-```
-
-Install backend dependencies
+### 2. Backend Setup
 
 ```bash
 cd backend
 npm install
 ```
 
+Create a `.env` file in the `backend/` directory:
 
-### Environment Variables
-**Backend**
-- Create a `.env` file in the `backend` directory.
-- Add the following variables with appropriate values
-```bash
-# Database connection string
+```env
+# ─── Database ────────────────────────────────────────────────────────────────
 MONGO_URI="mongodb://localhost:27017/your-database-name"
 
-# Frontend URL (adjust if needed)
+# ─── CORS ────────────────────────────────────────────────────────────────────
 ORIGIN="http://localhost:3000"
 
-# Email credentials for sending password resets and OTPs
+# ─── Email (for OTP & password reset) ────────────────────────────────────────
 EMAIL="your-email@example.com"
-PASSWORD="your-email-password"
+PASSWORD="your-email-app-password"
 
-# Token and cookie expiration settings
-LOGIN_TOKEN_EXPIRATION="30d"  # Days
-OTP_EXPIRATION_TIME="120000"  # Milliseconds
-PASSWORD_RESET_TOKEN_EXPIRATION="2m"  # Minutes
-COOKIE_EXPIRATION_DAYS="30"    # Days
+# ─── JWT & Session ───────────────────────────────────────────────────────────
+SECRET_KEY="your-strong-secret-key"
+LOGIN_TOKEN_EXPIRATION="30d"
+OTP_EXPIRATION_TIME="120000"
+PASSWORD_RESET_TOKEN_EXPIRATION="2m"
+COOKIE_EXPIRATION_DAYS="30"
 
-# Secret key for jwt security
-SECRET_KEY="your-secret-key"
-
-# Environment (production/development)
-PRODUCTION="false" # Initially set to false for development
+# ─── Environment ─────────────────────────────────────────────────────────────
+PRODUCTION="false"
 ```
 
-**Frontend**
-- Create a `.env` file in the `frontend` directory
-- Add the following variable:
+Start the backend server:
+
 ```bash
-# Backend URL (adjust if needed)
-REACT_APP_BASE_URL="http://localhost:8000" 
+npm run dev
 ```
 
-**Important**
-- Replace all placeholders (e.g., your_database_name, your_email) with your actual values.
-- Exclude the `.env` file from version control to protect sensitive information.
+The API will be available at `http://localhost:8000`.
 
-### Data seeding
-- **Get started quickly with pre-populated data**: Populate your database with sample users, products, reviews, and carts, enabling you to test functionalities without manual data entry.
+---
 
-**Steps**:
-- Open a new terminal window.
-- Navigate to the `backend` directory: `cd backend`
-- Run the seeding script: `npm run seed` ( This script executes the `seed.js` file within the `seed` subdirectory equivalent to running `node seed/seed.js` )
-### Running Development Servers
+### 3. Frontend Setup
 
-**Important:**
+Open a new terminal:
 
-- **Separate terminals**: Run the commands in separate terminal windows or use `split terminal` to avoid conflicts.
-- **Nodemon required**: Ensure you have `nodemon` installed globally to run the backend development servers using `npm run dev`. You can install it globally using `npm install -g nodemon`.
+```bash
+cd frontend
+npm install
+```
 
-#### Start the backend server
-- Navigate to the `backend` directory: `cd backend`
-- Start the server: `npm run dev` (or npm start)
-- You should see a message indicating the server is running, usually on port 8000.
-     
-#### Start the frontend server:
-- Navigate to the `frontend` directory: `cd frontend`
-- Start the server: `npm start`
-- You should see a message indicating the server is running, usually on port 3000.
+Create a `.env` file in the `frontend/` directory:
 
-### Accessing the Application
-Once both servers are running, you can access them at the following URL's:
-- Backend: http://localhost:8000
-- Frontend: http://localhost:3000
+```env
+# ─── API URL ──────────────────────────────────────────────────────────────────
+REACT_APP_BASE_URL="http://localhost:8000"
+```
 
+Start the React development server:
+
+```bash
+npm start
+```
+
+The app will be available at `http://localhost:3000`.
+
+> 💡 **Tip:** Use split terminals to run both servers simultaneously without conflicts.
+
+---
+
+### 4. Seed the Database (Optional but Recommended)
+
+Populate the database with sample users, products, reviews, and carts to test the app right away — no manual data entry needed.
+
+```bash
+cd backend
+npm run seed
+```
+
+This runs `seed/seed.js` and fills your database with demo data.
+
+---
+
+## 🌐 Running the App
+
+| Service | URL |
+|---|---|
+| Frontend | `http://localhost:3000` |
+| Backend API | `http://localhost:8000` |
+
+---
+
+## 🚀 Deployment
+
+### Frontend → Vercel
+
+1. Import your repo on [Vercel](https://vercel.com) and set the **Root Directory** to `frontend`.
+2. Add the environment variable: `REACT_APP_BASE_URL=<your-render-backend-url>`
+3. Deploy.
+
+### Backend → Render
+
+1. Create a new **Web Service** on [Render](https://render.com), connect the repo, and set **Root Directory** to `backend`.
+2. Set **Build Command:** `npm install` and **Start Command:** `npm start`
+3. Add all backend environment variables. Set `ORIGIN` to your Vercel frontend URL and `PRODUCTION="true"`.
+4. Use a [MongoDB Atlas](https://www.mongodb.com/atlas) cluster for the `MONGO_URI` in production.
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please follow the [Code of Conduct](CODE_OF_CONDUCT.md).
+
+1. **Fork** the repository
+2. **Branch:** `git checkout -b feature/your-feature`
+3. **Commit:** `git commit -m "feat: describe your change"`
+4. **Push:** `git push origin feature/your-feature`
+5. **Open a Pull Request**
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
+
+---
+
+<div align="center">
+
+Made with ❤️ by [EllyCarlos](https://github.com/EllyCarlos)
+
+</div>
